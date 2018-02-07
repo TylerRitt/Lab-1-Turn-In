@@ -22,10 +22,10 @@ namespace InvoiceTotal
 		}
 
         // TODO: declare class variables for array and list here
-
-        decimal[] total = new decimal[3];
         int count = 0;
-
+        decimal[] total = new decimal[5];
+        
+        List<decimal> prices = new List<decimal>();
 
 
         private void btnCalculate_Click(object sender, EventArgs e)
@@ -95,33 +95,45 @@ namespace InvoiceTotal
 
         }
 
-		private void btnExit_Click(object sender, EventArgs e)
-		{
+        private void btnExit_Click(object sender, EventArgs e)
+        {
             // TODO: add code that displays dialog boxes here
-           
+            Array.Sort(total);
+            Array.Reverse(total);
 
             string numberString = "";
 
-            /*foreach ( int number in total)
+
+            foreach (int number in total)
             {
-                numberString += number.ToString("c") + " ";
 
-            }
-            MessageBox.Show(numberString, "Invoice Totals");
-            this.Close();*/
-
-            for (int i = 0; i < count; i++)
-            {
-                numberString += total[i].ToString("c") + " ";
-
-
-                MessageBox.Show(numberString, "Invoice Totals");
-                this.Close();
+                if (number != 0)
+                    numberString += number.ToString("c") + "\n";
 
             }
 
+            prices.Sort();
+            prices.Reverse();
+
+
+            string total = "";
+
+            foreach (int i in prices)
+            {
+                if (i != 0)
+                    total += i.ToString("c") + "\n";
+            }
+            MessageBox.Show(numberString, "Array Total");
+            MessageBox.Show(total, "List Total");
+
+
+
+            this.Close();
 
         }
+
+
+        
 
 	}
 }

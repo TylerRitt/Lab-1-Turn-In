@@ -93,14 +93,11 @@ namespace Test_Average
         private void getScoresButton_Click(object sender, EventArgs e)
         {
 
-            testScoresListBox.Items.Clear();
-
-
             try
             {
                 // Local variables
                 const int SIZE = 5;            // Number of tests
-                int[] score = new int[SIZE];
+                int[] scores = new int[SIZE];
                 int index = 0;                 // Loop counter
                                                 // To hold one score 
                 int highestScore;              // To hold the highest score
@@ -113,14 +110,14 @@ namespace Test_Average
                 inputFile = File.OpenText("TestScores.txt");
 
                 // Read the test scores into the array.
-                while (!inputFile.EndOfStream && index < score.Length)
+                while (!inputFile.EndOfStream && index < scores.Length)
                 {
 
 
 
 
                     // TODO:  read a line from the file, convert to int put in score 
-                   score[index] = int.Parse (inputFile.ReadLine());
+                   scores[index] = int.Parse (inputFile.ReadLine());
                     // put score in the array at the current index
                     index++;
 
@@ -133,23 +130,23 @@ namespace Test_Average
 
                 // and add one item at a time to the listbox
 
-                foreach (int value in score)
+                foreach (int value in scores)
                 {
-                    testScoresListBox.Items.Add(score[index]);
+                    testScoresListBox.Items.Add(value);
                 }
 
                 // Get the highest, lowest, and average scores.
                 // Use the methods
 
 
-                highestScore = Highest(score);
-                lowestScore = Lowest(score);
-                averageScore = Average(score);
+                highestScore = Highest(scores);
+                lowestScore = Lowest(scores);
+                averageScore = Average(scores);
 
 
 
                 // Display the values, highest, lowest and average 
-                averageScoreLabel.Text = averageScore.ToString("n2");
+                averageScoreLabel.Text = averageScore.ToString("n1");
                 lowScoreLabel.Text = lowestScore.ToString();
                 highScoreLabel.Text = highestScore.ToString();
 
