@@ -16,6 +16,7 @@ namespace TicTacToe
         public TTTForm()
         {
             InitializeComponent();
+            ResetSquares();
         }
 
         const string USER_SYMBOL = "X";
