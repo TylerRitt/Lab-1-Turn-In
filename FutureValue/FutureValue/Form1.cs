@@ -47,8 +47,9 @@ namespace FutureValue
 
                     // TODO: Add the calculation to the rectangular array here
                     values[count, 0] = monthlyInvestment.ToString("c");
-                    values[count, 1] = interestRateYearly.ToString("n2");
-                    values[]
+                    values[count, 1] = interestRateYearly.ToString("c");
+                    values[count, 2] = years.ToString();
+                    values[count, 3] = futureValue.ToString("c");
 
 
                 }
